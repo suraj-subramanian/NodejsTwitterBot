@@ -7,12 +7,12 @@ var config =require('./config');// API keys
 var T = new Twit(config);//Twit object with API keys in config.js
 
 tweetIt();
-setInterval(tweetIt,1000*30);
+setInterval(tweetIt,1000*60*60); //Time interval in ms
 
 function tweetIt() {
     var r = Math.floor(Math.random()*100);
     var tweet={
-        status:'Here is a #RandomNumber :'+r+'.'
+        status:'Here is a #RandomNumber :'+r+'.'  // Posts a Random number
     }
 
     T.post('statuses/update',tweet,tweeted);
@@ -30,8 +30,8 @@ function tweetIt() {
 
 /* //To get tweets
 var params= {
-    q: 'rainbow',       //parameters
-    count: 2
+    q: 'pokemon',       //parameters eg. post with pokemon
+    count: 2            // No. of tweets
 };
 
 T.get('search/tweets',params,gotData);
